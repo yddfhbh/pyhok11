@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="닉네임과 메시지를 숫자로만 입력하는 실시간 채팅">
+  <title>숫자 채팅</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/socket.io/socket.io.js" defer></script>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="채널 목록">
+      <header class="brand">
+        <span class="brand-mark" aria-hidden="true">#</span>
+        <div>
+          <strong>숫자 채팅</strong>
+          <small>NUMERIC ONLY</small>
+        </div>
+      </header>
+
+      <nav class="channels">
+        <p class="channel-group">채팅 채널</p>
+        <button class="channel active" type="button">
+          <span aria-hidden="true">#</span>
+          <span>일반-채팅</span>
+        </button>
+        <button class="channel" type="button" disabled>
+          <span aria-hidden="true">#</span>
+          <span>공지사항</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-note">
+        <strong>입력 규칙</strong>
+        <p>닉네임 1~12자리</p>
+        <p>메시지 1~200자리</p>
+        <p>ASCII 숫자 0~9만 허용</p>
+      </div>
+    </aside>
+
+    <main class="chat">
+      <header class="chat-header">
+        <div>
+          <h1><span aria-hidden="true">#</span> 일반-채팅</h1>
+          <p>숫자로만 대화하는 실시간 채팅방</p>
+        </div>
+
+        <div class="online" aria-live="polite">
+          <span class="online-dot" aria-hidden="true"></span>
+          <span id="onlineCount">0명 접속</span>
+        </div>
+      </header>
+
+      <section id="messageList" class="messages" aria-label="채팅 메시지" aria-live="polite">
+        <div class="welcome">
+          <div class="welcome-icon" aria-hidden="true">#</div>
+          <h2>#일반-채팅에 오신 것을 환영합니다</h2>
+          <p>닉네임과 메시지에는 숫자만 입력할 수 있습니다.</p>
+        </div>
+      </section>
+
+      <footer class="composer-area">
+        <div id="statusMessage" class="status" role="status"></div>
+
+        <form id="chatForm" class="composer" autocomplete="off">
+          <label class="nickname-field">
+            <span class="sr-only">숫자 닉네임</span>
+            <input id="nicknameInput" name="nickname" type="text" inputmode="numeric" pattern="[0-9]{1,12}" maxlength="12" placeholder="닉네임" aria-label="숫자 닉네임" required>
+          </label>
+
+          <label class="message-field">
+            <span class="sr-only">숫자 메시지</span>
+            <input id="messageInput" name="message" type="text" inputmode="numeric" pattern="[0-9]{1,200}" maxlength="200" placeholder="숫자 메시지 입력" aria-label="숫자 메시지" required>
+          </label>
+
+          <button id="sendButton" type="submit">보내기</button>
+        </form>
+      </footer>
+    </main>
+  </div>
+
+  <noscript>이 채팅을 사용하려면 JavaScript가 필요합니다.</noscript>
+</body>
+</html>

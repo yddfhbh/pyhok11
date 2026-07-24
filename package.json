@@ -1,0 +1,20 @@
+{
+  "name": "pyhok11-numeric-chat",
+  "version": "1.0.0",
+  "private": true,
+  "description": "숫자 닉네임과 숫자 메시지만 허용하는 실시간 익명 채팅",
+  "type": "module",
+  "main": "server.mjs",
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node --watch server.mjs",
+    "check": "node --check server.mjs && node --check public/app.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "socket.io": "^4.8.1"
+  }
+}
